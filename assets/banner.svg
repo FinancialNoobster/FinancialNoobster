@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="350" viewBox="0 0 1200 350" role="img" aria-label="Viranch Gupta – Full-stack development, embedded systems, and fintech">
+<defs>
+  <linearGradient id="back" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#091326"/><stop offset="0.57" stop-color="#111c37"/><stop offset="1" stop-color="#160f35"/></linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#32e5cb"/><stop offset="0.48" stop-color="#53a9ff"/><stop offset="1" stop-color="#aa77ff"/></linearGradient>
+  <linearGradient id="blur" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2bdacf" stop-opacity=".18"/><stop offset="1" stop-color="#9b6cf0" stop-opacity=".07"/></linearGradient>
+  <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#e1eaff" opacity=".11"/></pattern>
+  <filter id="glow"><feGaussianBlur stdDeviation="34"/></filter>
+</defs>
+<rect width="1200" height="350" rx="22" fill="url(#back)"/>
+<rect width="1200" height="350" rx="22" fill="url(#dots)"/>
+<circle cx="970" cy="110" r="105" fill="#4f6dff" opacity=".15" filter="url(#glow)"/>
+<circle cx="1120" cy="260" r="115" fill="#25d4c6" opacity=".12" filter="url(#glow)"/>
+<path d="M850 40L1135 40M790 94H1000M880 150H1160M810 212H1090M905 281H1160" stroke="#a5cdf6" opacity=".1" stroke-width="1.5"/>
+<path d="M900 40v55m120-55v110m85-56v120m-200-64v132m130-70v69m80-131v85" stroke="#6cbbf5" opacity=".16" stroke-width="2"/>
+<g fill="#79dbfa" opacity=".72"><circle cx="900" cy="40" r="5"/><circle cx="1020" cy="150" r="4"/><circle cx="1105" cy="94" r="5"/><circle cx="905" cy="282" r="5"/><circle cx="1115" cy="235" r="5"/></g>
+<g transform="translate(897 79)">
+  <rect width="214" height="186" rx="20" fill="#132545" stroke="#5e83ab" stroke-opacity=".45"/>
+  <rect x="16" y="17" width="182" height="31" rx="8" fill="#203453"/>
+  <circle cx="34" cy="32" r="5" fill="#ff6a8c"/><circle cx="50" cy="32" r="5" fill="#f7c565"/><circle cx="66" cy="32" r="5" fill="#38e0ba"/>
+  <text x="25" y="85" font-size="18" font-family="monospace" fill="#78e9d0">&lt;build&gt;</text>
+  <text x="39" y="118" font-size="15" font-family="monospace" fill="#f3f7ff">web + hardware</text>
+  <text x="39" y="144" font-size="15" font-family="monospace" fill="#bba5ff">data + ideas</text>
+  <text x="25" y="172" font-size="18" font-family="monospace" fill="#78e9d0">&lt;/build&gt;</text>
+</g>
+<rect x="52" y="47" width="232" height="35" rx="17.5" fill="#172b48" stroke="#3d5c7b"/>
+<circle cx="75" cy="65" r="5" fill="#31e7bf"/><text x="92" y="70" font-size="15" fill="#bfddf2" font-family="Arial, sans-serif" letter-spacing="1">@FINANCIALNOOBSTER</text>
+<text x="51" y="157" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="62" letter-spacing="-2" fill="#f6f9ff">Viranch Gupta</text>
+<rect x="52" y="177" width="665" height="5" rx="2.5" fill="url(#accent)"/>
+<text x="52" y="230" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="24" fill="#bfe8f9">FULL STACK  ·  EMBEDDED SYSTEMS  ·  FINTECH</text>
+<text x="52" y="282" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#b5bed6">Building useful software where people, devices and data meet.</text>
+<text x="52" y="319" font-family="Arial, Helvetica, sans-serif" font-size="14" letter-spacing="2" fill="#76b5c8">REACT / NODE.JS / MONGODB / PYTHON / ESP32</text>
+</svg>
