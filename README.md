@@ -150,24 +150,28 @@ flowchart TD
 
 <div align="center">
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=FinancialNoobster&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&rank_icon=github)
-![Top repository languages](https://github-readme-stats.vercel.app/api/top-langs/?username=FinancialNoobster&layout=compact&theme=tokyonight&hide_border=true&langs_count=8)
+![GitHub statistics](./assets/stats.svg)
+![Top repository languages](./assets/top-languages.svg)
 
 ![GitHub streak](https://streak-stats.demolab.com?user=FinancialNoobster&theme=tokyonight&hide_border=true)
 
 </div>
 
-## 🏆 GitHub Trophies
+## 🏆 GitHub Milestones
 
 <div align="center">
 
-![GitHub trophies](https://github-profile-trophy.vercel.app/?username=FinancialNoobster&theme=tokyonight&no-frame=true&no-bg=true&column=5&margin-w=8&margin-h=8)
+![GitHub milestones](./assets/milestones.svg)
+
+*These are custom milestones calculated from public GitHub data, not GitHub-issued achievements.*
 
 </div>
 
 ## 📈 Contribution Activity
 
-![Contribution graph](https://github-readme-activity-graph.vercel.app/graph?username=FinancialNoobster&theme=tokyo-night&hide_border=true&area=true)
+![Contribution graph](./assets/contribution-graph.svg)
+
+*Stats refresh automatically each day via GitHub Actions, using the repository’s built-in token.*
 
 ## 🤝 Connect
 
@@ -180,4 +184,4 @@ flowchart TD
 
 </div>
 
-<!-- Dynamic stats, streaks, and trophies are provided by third-party services and may occasionally be unavailable. -->
+<!-- Statistics, languages, milestones and contributions are generated daily by GitHub Actions. The streak card is still third-party hosted. -->
