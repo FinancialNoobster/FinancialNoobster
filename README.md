@@ -145,13 +145,13 @@ My public projects, languages, milestones and activity are discovered automatica
 ## 📊 Live GitHub Dashboard
 
 <!-- LIVE_GITHUB_START -->
-<sub>Data last changed: **16 Nov 2026, 13:43 UTC** · GitHub API · refresh checked hourly (not instant)</sub>
+<sub>Data last changed: **16 Nov 2026, 23:25 UTC** · GitHub API · refresh checked hourly (not instant)</sub>
 
 ### 📌 GitHub at a glance
 
 | Public repositories | Stars on my projects | Forks of my projects | Followers | Following |
 | :---: | :---: | :---: | :---: | :---: |
-| **8** | **2** | **0** | **11** | **13** |
+| **8** | **2** | **0** | **10** | **13** |
 
 ### 🔥 Contributions and streaks
 
@@ -240,9 +240,9 @@ My public projects, languages, milestones and activity are discovered automatica
 | Past-year contributions | **139** | 250 |
 | Public repositories | **8** | 10 |
 | Stars earned | **2** | 5 |
-| Followers | **11** | 25 |
+| Followers | **10** | 25 |
 
-<!-- DATA_HASH:5885902661d28f7714a237ecd665364319877c0f8b22055c4f8a804e4ee9ce88 -->
+<!-- DATA_HASH:ad5c846bb18282671b2b2a5070a72df285285dd4b109a68524eb129c6c64d8e4 -->
 <!-- LIVE_GITHUB_END -->
 
 ## 🤝 Connect
