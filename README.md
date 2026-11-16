@@ -1,5 +1,9 @@
 <div align="center">
 
+![Viranch Gupta | Full-Stack • Embedded Systems • HR Technology](./assets/banner.svg)
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3300&pause=1100&color=41D8D1&center=true&vCenter=true&width=860&lines=Full-Stack+Developer+%7C+Embedded+Systems+Builder;Building+Working+Bridge%3A+HR+SaaS+%2B+Attendance+Devices;ESP32+%7C+Arduino+%7C+APIs+%7C+Security+%7C+System+Design;Turning+real-world+problems+into+connected+products)](https://github.com/DenverCoder1/readme-typing-svg)
+
 # Viranch Gupta
 
 **Full-Stack Developer · Embedded Systems Builder · HR Technology**
