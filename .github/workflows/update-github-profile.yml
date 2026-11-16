@@ -1,4 +1,4 @@
-name: Update GitHub profile text
+name: Update Live GitHub README
 
 on:
   workflow_dispatch:
@@ -9,15 +9,15 @@ permissions:
   contents: write
 
 concurrency:
-  group: github-profile-readme
+  group: update-live-github-profile
   cancel-in-progress: false
 
 jobs:
   update-profile:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 10
     steps:
-      - name: Check out the profile repository
+      - name: Check out profile repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -25,20 +25,20 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Refresh real GitHub metrics as Markdown text
+      - name: Refresh profile from GitHub API
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_USERNAME: FinancialNoobster
-        run: python scripts/build_github_cards.py
+          PROFILE_USERNAME: ${{ github.repository_owner }}
+        run: python scripts/update_live_readme.py
 
-      - name: Commit updated README
+      - name: Commit if statistics changed
         run: |
+          if git diff --quiet -- README.md; then
+            echo 'No changed GitHub metrics.'
+            exit 0
+          fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add README.md
-          if git diff --cached --quiet; then
-            echo 'README statistics already up to date.'
-          else
-            git commit -m 'docs: refresh GitHub activity and statistics [skip ci]'
-            git push
-          fi
+          git commit -m 'docs: refresh live GitHub metrics [skip ci]'
+          git push
