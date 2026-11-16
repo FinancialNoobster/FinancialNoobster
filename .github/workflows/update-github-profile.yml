@@ -1,16 +1,21 @@
-name: Update GitHub profile graphics
+name: Update GitHub profile text
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '31 3 * * *' # Refresh every day at 03:31 UTC
+    - cron: '17 * * * *'
 
 permissions:
   contents: write
 
+concurrency:
+  group: github-profile-readme
+  cancel-in-progress: false
+
 jobs:
   update-profile:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     steps:
       - name: Check out the profile repository
         uses: actions/checkout@v4
@@ -20,21 +25,20 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Generate GitHub SVG cards from real public data
+      - name: Refresh real GitHub metrics as Markdown text
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_USERNAME: FinancialNoobster
         run: python scripts/build_github_cards.py
 
-      - name: Commit updated graphics
+      - name: Commit updated README
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets/stats.svg assets/top-languages.svg assets/milestones.svg assets/contribution-graph.svg
+          git add README.md
           if git diff --cached --quiet; then
-            echo 'Profile graphics are already current.'
+            echo 'README statistics already up to date.'
           else
-            git commit -m 'chore: refresh public GitHub profile graphics'
+            git commit -m 'docs: refresh GitHub activity and statistics [skip ci]'
             git push
           fi
-
