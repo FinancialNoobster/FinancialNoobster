@@ -141,7 +141,104 @@ My public projects, languages, milestones and activity are discovered automatica
 ## 📊 Live GitHub Dashboard
 
 <!-- LIVE_GITHUB_START -->
-> 🔄 Live data initializes when the GitHub Actions workflow runs. Public repository and contribution metrics will refresh hourly.
+<sub>Data last changed: **16 Nov 2026, 05:06 UTC** · GitHub API · refresh checked hourly (not instant)</sub>
+
+### 📌 GitHub at a glance
+
+| Public repositories | Stars on my projects | Forks of my projects | Followers | Following |
+| :---: | :---: | :---: | :---: | :---: |
+| **8** | **2** | **0** | **11** | **13** |
+
+### 🔥 Contributions and streaks
+
+| Past-year contributions | Current streak | Longest streak (past year) | Tracked yearly contributions |
+| :---: | :---: | :---: | :---: |
+| **138** | **4 days** | **15 days** | **146** |
+
+*GitHub GraphQL contributions; streaks use UTC days and are calculated from the past-year calendar.*
+
+#### Contributions by calendar year
+
+| Year | Contributions |
+| --- | ---: |
+| **2026** | **134** |
+| **2025** | **4** |
+| **2024** | **7** |
+| **2023** | **0** |
+| **2022** | **1** |
+
+#### 📈 Weekly contribution activity (text chart)
+
+| Week of (UTC) | Contributions | Relative activity |
+| --- | ---: | --- |
+| 15 Nov 2026 | **21** | `██████████████` |
+| 08 Nov 2026 | **9** | `██████░░░░░░░░` |
+| 01 Nov 2026 | **0** | `░░░░░░░░░░░░░░` |
+| 25 Oct 2026 | **0** | `░░░░░░░░░░░░░░` |
+| 18 Oct 2026 | **0** | `░░░░░░░░░░░░░░` |
+| 11 Oct 2026 | **0** | `░░░░░░░░░░░░░░` |
+| 04 Oct 2026 | **0** | `░░░░░░░░░░░░░░` |
+| 27 Sep 2026 | **5** | `███░░░░░░░░░░░` |
+| 20 Sep 2026 | **6** | `████░░░░░░░░░░` |
+| 13 Sep 2026 | **2** | `█░░░░░░░░░░░░░` |
+| 06 Sep 2026 | **0** | `░░░░░░░░░░░░░░` |
+| 30 Aug 2026 | **0** | `░░░░░░░░░░░░░░` |
+
+*Bars are scaled relative to the busiest week shown.*
+
+### 💻 Repository languages
+
+| Language | Share of code bytes | Relative share |
+| --- | ---: | --- |
+| **JavaScript** | 39.4% | `████░░░░░░` |
+| **HTML** | 22.1% | `██░░░░░░░░` |
+| **Vue** | 17.8% | `██░░░░░░░░` |
+| **Python** | 14.0% | `█░░░░░░░░░` |
+| **CSS** | 6.7% | `█░░░░░░░░░` |
+
+*GitHub-reported code bytes across original public repositories; this profile repository and forks are excluded. Not a measure of developer proficiency.*
+
+### 🚀 Recently updated public projects
+
+| Repository | Primary language | Stars | Last push (UTC) |
+| --- | --- | ---: | --- |
+| [Money-Mediia](https://github.com/FinancialNoobster/Money-Mediia) | JavaScript | 1 | 2026-04-04 |
+| [Backend-Hardware-Testing](https://github.com/FinancialNoobster/Backend-Hardware-Testing) | JavaScript | 0 | 2026-04-02 |
+| [Mad_2_Placement-Portal-Application](https://github.com/FinancialNoobster/Mad_2_Placement-Portal-Application) | Vue | 0 | 2026-03-11 |
+| [Mad_1_Placement-Portal-Application](https://github.com/FinancialNoobster/Mad_1_Placement-Portal-Application) | HTML | 1 | 2026-03-11 |
+| [GFG_Task_1_HTML-CSS](https://github.com/FinancialNoobster/GFG_Task_1_HTML-CSS) | HTML | 0 | 2025-11-16 |
+| [Vittashastra](https://github.com/FinancialNoobster/Vittashastra) | HTML | 0 | 2024-04-03 |
+
+### ⭐ Most-starred public repositories
+
+| Repository | Stars | Description |
+| --- | ---: | --- |
+| [Money-Mediia](https://github.com/FinancialNoobster/Money-Mediia) | 1 | Making Employee Manegment Software for Money Mediia. |
+| [Mad_1_Placement-Portal-Application](https://github.com/FinancialNoobster/Mad_1_Placement-Portal-Application) | 1 | Mad 1 Project by 23f2003605 for Jan 2026 Term |
+| [Backend-Hardware-Testing](https://github.com/FinancialNoobster/Backend-Hardware-Testing) | 0 | Public repository |
+| [Mad_2_Placement-Portal-Application](https://github.com/FinancialNoobster/Mad_2_Placement-Portal-Application) | 0 | Mad 2 Project by 23f2003605 for Jan 2026 Term |
+| [GFG_Task_1_HTML-CSS](https://github.com/FinancialNoobster/GFG_Task_1_HTML-CSS) | 0 | This is the first task by GFG Full Stact Web Development Course. |
+
+### 📌 Repositories pinned on my GitHub profile
+
+| Repository | Stars | Description |
+| --- | ---: | --- |
+| [Money-Mediia](https://github.com/FinancialNoobster/Money-Mediia) | 1 | Making Employee Manegment Software for Money Mediia. |
+| [Mad_1_Placement-Portal-Application](https://github.com/FinancialNoobster/Mad_1_Placement-Portal-Application) | 1 | Mad 1 Project by 23f2003605 for Jan 2026 Term |
+| [Vittashastra](https://github.com/FinancialNoobster/Vittashastra) | 0 | HTML |
+| [Backend-Hardware-Testing](https://github.com/FinancialNoobster/Backend-Hardware-Testing) | 0 | JavaScript |
+| [Mad_2_Placement-Portal-Application](https://github.com/FinancialNoobster/Mad_2_Placement-Portal-Application) | 0 | Mad 2 Project by 23f2003605 for Jan 2026 Term |
+
+### 🏆 Personal progress milestones (not official GitHub trophies)
+
+| Metric | Current | Next goal |
+| --- | ---: | ---: |
+| Past-year contributions | **138** | 250 |
+| Public repositories | **8** | 10 |
+| Stars earned | **2** | 5 |
+| Followers | **11** | 25 |
+
+<!-- DATA_HASH:9f4877bb09aec5b2e455c74b07b050fbcd3b83125a25a73959c3239cd0daf4b0 -->
 <!-- LIVE_GITHUB_END -->
 
 ## 🤝 Connect
