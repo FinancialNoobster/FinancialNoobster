@@ -236,5 +236,173 @@ def main():
     generate_graph(contributions)
 
 
+# PROFILE TEXT DASHBOARD: replaces the old SVG generation entrypoint.
+def md(value, length=130):
+    s = ' '.join(str(value or '').split())
+    for a, b in [('\\', '\\\\'), ('|', '\\|'), ('<', '&lt;'), ('>', '&gt;'), ('[', '\\['), (']', '\\]')]:
+        s = s.replace(a, b)
+    return s[:length]
+
+
+def gql(query, variables):
+    res = api('/graphql', 'POST', {'query': query, 'variables': variables})
+    if res.get('errors') or not res.get('data'):
+        raise RuntimeError('Contribution data unavailable: ' + str(res.get('errors', []))[:350])
+    return res['data']
+
+
+def level_goal(num, targets):
+    nxt = next((n for n in targets if n > num), None)
+    if nxt is None:
+        nxt = ((num // 1000) + 1) * 1000
+    return f'{nxt:,}'
+
+
+def refresh_readme():
+    from collections import Counter
+    from datetime import timedelta
+    from pathlib import Path
+    from urllib.parse import quote
+    username = USERNAME
+    user = api('/users/' + quote(username))
+    repos = fetch_repos(username)
+    actual_repos = [r for r in repos if r['name'].lower() != username.lower()]
+    calendar = fetch_contributions(username)
+    days = {}
+    for week in calendar['weeks']:
+        for item in week['contributionDays']:
+            days[dt.date.fromisoformat(item['date'])] = int(item['contributionCount'])
+    today = dt.datetime.now(dt.timezone.utc).date()
+    ordered = [(d, days[d]) for d in sorted(days) if d <= today]
+    longest = streak = 0
+    for d, n in ordered:
+        streak = streak + 1 if n else 0
+        longest = max(longest, streak)
+    current = 0
+    day = today if days.get(today, 0) else today - timedelta(days=1)
+    while days.get(day, 0):
+        current += 1
+        day -= timedelta(days=1)
+
+    discovery = gql(
+        'query($login:String!){user(login:$login){'
+        'pinnedItems(first:6,types:REPOSITORY){nodes{...on Repository{'
+        'name url description stargazerCount isPrivate primaryLanguage{name}}}}'
+        'contributionsCollection{contributionYears}}}',
+        {'login': username})['user']
+    if not discovery:
+        raise RuntimeError('GitHub GraphQL could not find profile')
+    years = sorted({int(y) for y in discovery['contributionsCollection']['contributionYears']})
+    annual = {}
+    q = 'query($login:String!,$start:DateTime!,$end:DateTime!){user(login:$login){contributionsCollection(from:$start,to:$end){contributionCalendar{totalContributions}}}}'
+    now = dt.datetime.now(dt.timezone.utc)
+    for y in years:
+        if y > today.year:
+            continue
+        start = dt.datetime(y, 1, 1, tzinfo=dt.timezone.utc)
+        end = min(dt.datetime(y, 12, 31, 23, 59, 59, tzinfo=dt.timezone.utc), now)
+        data = gql(q, {'login': username, 'start': start.isoformat(), 'end': end.isoformat()})
+        annual[y] = int(data['user']['contributionsCollection']['contributionCalendar']['totalContributions'])
+
+    langs = Counter()
+    for r in actual_repos:
+        for language, size in api(r['languages_url']).items():
+            langs[language] += int(size)
+    total_bytes = sum(langs.values())
+    stars = sum(int(r['stargazers_count']) for r in actual_repos)
+    forks = sum(int(r['forks_count']) for r in actual_repos)
+    year_total = int(calendar['totalContributions'])
+    followers = int(user['followers'])
+    repo_count = int(user['public_repos'])
+
+    parts = [
+        '**Automatically updated from GitHub every hour.** Last successful sync (UTC): ' + today.isoformat(), '',
+        '### 📌 GitHub statistics', '',
+        '| Public repos | Stars received | Forks of owned projects | Followers | Following |',
+        '| :---: | :---: | :---: | :---: | :---: |',
+        f'| **{repo_count:,}** | **{stars:,}** | **{forks:,}** | **{followers:,}** | **{int(user["following"]):,}** |',
+        '',
+        '### 🔥 Contributions and streaks', '',
+        '| Past 12 months | Current streak | Longest streak (past 12 months) | Recorded contribution total |',
+        '| :---: | :---: | :---: | :---: |',
+        f'| **{year_total:,}** | **{current} days** | **{longest} days** | **{sum(annual.values()):,}** |',
+        '',
+        '*Streaks are measured from the past-year contribution calendar in UTC; an unfinished current day is allowed. '
+        'Counts depend on GitHub API visibility, and may exclude private contributions.*', '',
+        '### 📅 Contributions by year', '',
+        '| Year | Contributions |', '| --- | ---: |'
+    ]
+    if annual:
+        parts.extend(f'| {year} | **{annual[year]:,}** |' for year in sorted(annual, reverse=True))
+    else:
+        parts.append('| — | GitHub reported no contribution history |')
+    weekly = {}
+    for d, n in ordered:
+        sunday = d - timedelta(days=(d.weekday() + 1) % 7)
+        weekly[sunday] = weekly.get(sunday, 0) + n
+    recent = sorted(weekly.items())[-12:]
+    highest = max([n for _, n in recent] + [1])
+    parts += ['', '### 📈 Weekly contribution activity (text only)', '',
+              '| Week starting (UTC) | Contributions | Relative activity |', '| --- | ---: | --- |']
+    for d, n in reversed(recent):
+        blocks = round(n / highest * 12) if n else 0
+        parts.append(f'| {d.isoformat()} | **{n}** | {"█" * blocks}{"░" * (12 - blocks)} |')
+    parts += ['', '*Bars are relative to the most active of these 12 weeks.*', '',
+              '### 💻 Programming languages in public repositories', '',
+              '| Language | Code bytes share | Activity bar |', '| --- | ---: | --- |']
+    if langs:
+        for language, size in langs.most_common(9):
+            percent = size / total_bytes * 100
+            blocks = round(percent / 10)
+            parts.append(f'| **{md(language)}** | {percent:.1f}% | {"█" * blocks}{"░" * (10 - blocks)} |')
+    else:
+        parts.append('| — | No public language data | — |')
+    parts += ['', '*Based on code bytes in original public repositories, excluding this profile repository and forks. '
+              'This is not a measurement of personal proficiency.*', '',
+              '### 🚀 Recently updated repositories', '',
+              '| Project | Main language | Stars | Last push (UTC) |', '| --- | --- | ---: | --- |']
+    latest = sorted(actual_repos, key=lambda r: r.get('pushed_at') or '', reverse=True)[:7]
+    for r in latest:
+        parts.append(f'| [{md(r["name"])}]({r["html_url"]}) | {md(r.get("language") or "—")} | {r["stargazers_count"]} | {(r.get("pushed_at") or "")[:10]} |')
+    if not latest:
+        parts.append('| No public repositories found | — | — | — |')
+    parts += ['', '### ⭐ Most-starred repositories', '',
+              '| Project | Stars | Description |', '| --- | ---: | --- |']
+    for r in sorted(actual_repos, key=lambda r: r['stargazers_count'], reverse=True)[:5]:
+        parts.append(f'| [{md(r["name"])}]({r["html_url"]}) | {r["stargazers_count"]} | {md(r.get("description") or "Public repository", 90)} |')
+    parts += ['', '### 📌 Pinned public repositories', '',
+              '| Project | Stars | Focus |', '| --- | ---: | --- |']
+    pinned = [r for r in discovery['pinnedItems']['nodes'] if r and not r.get('isPrivate')]
+    if pinned:
+        for r in pinned:
+            parts.append(f'| [{md(r["name"])}]({r["url"]}) | {r["stargazerCount"]} | {md(r.get("description") or (r.get("primaryLanguage") or {}).get("name") or "Pinned project", 90)} |')
+    else:
+        parts.append('| — | — | Pin repositories on your GitHub profile to populate this table |')
+    parts += ['', '### 🏆 Dynamic personal milestones', '',
+              '| Metric | Actual value | Next goal |', '| --- | ---: | ---: |',
+              f'| Contributions (past 12 months) | **{year_total:,}** | {level_goal(year_total, [50,100,250,500,1000,2000,5000])} |',
+              f'| Public repositories | **{repo_count}** | {level_goal(repo_count, [5,10,25,50,100])} |',
+              f'| Repository stars | **{stars}** | {level_goal(stars, [1,5,10,25,50,100])} |',
+              f'| Followers | **{followers}** | {level_goal(followers, [10,25,50,100,250])} |',
+              '', '*These are automatically calculated personal goals, not official GitHub achievements.*', '',
+              '[View the native live contribution calendar on GitHub](https://github.com/' + quote(username) + ')'
+              ]
+    updated = '\n'.join(parts).strip()
+    path = Path(__file__).resolve().parent.parent / 'README.md'
+    source = path.read_text(encoding='utf-8')
+    begin, end = '<!-- LIVE_GITHUB_START -->', '<!-- LIVE_GITHUB_END -->'
+    if source.count(begin) != 1 or source.count(end) != 1:
+        raise RuntimeError('README live section markers missing or duplicated')
+    before, remainder = source.split(begin, 1)
+    _, after = remainder.split(end, 1)
+    replacement = before + begin + '\n' + updated + '\n' + end + after
+    if replacement != source:
+        path.write_text(replacement, encoding='utf-8')
+        print('README text dashboard updated from actual GitHub APIs')
+    else:
+        print('README already matches current GitHub data')
+
+
 if __name__ == '__main__':
-    main()
+    refresh_readme()
+
