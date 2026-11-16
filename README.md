@@ -146,13 +146,8 @@ My public projects, languages, milestones and activity are discovered automatica
 
 ## 🤝 Connect
 
-<div align="center">
-
-[`GitHub-FinancialNoobster-171e33?style=for-the-badge&logo=github)](https://github.com/FinancialNoobster`
-[`LinkedIn-Viranch Gupta-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/viranch-gupta-99667b18b`
+[GitHub](https://github.com/FinancialNoobster) · [LinkedIn](https://www.linkedin.com/in/viranch-gupta-99667b18b)
 
 **Building products that connect people, software, and hardware.** ⚡
 
-</div>
-
-<!-- Statistics and activities are generated as GitHub Markdown by the hourly workflow. -->
+<!-- Public GitHub statistics and activities are generated as Markdown by the hourly workflow. -->
