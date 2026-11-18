@@ -145,7 +145,7 @@ My public projects, languages, milestones and activity are discovered automatica
 ## 📊 Live GitHub Dashboard
 
 <!-- LIVE_GITHUB_START -->
-<sub>Data last changed: **18 Nov 2026, 00:59 UTC** · GitHub API · refresh checked hourly (not instant)</sub>
+<sub>Data last changed: **18 Nov 2026, 08:36 UTC** · GitHub API · refresh checked hourly (not instant)</sub>
 
 ### 📌 GitHub at a glance
 
@@ -232,6 +232,7 @@ My public projects, languages, milestones and activity are discovered automatica
 | [Vittashastra](https://github.com/FinancialNoobster/Vittashastra) | 0 | HTML |
 | [Backend-Hardware-Testing](https://github.com/FinancialNoobster/Backend-Hardware-Testing) | 0 | JavaScript |
 | [Mad_2_Placement-Portal-Application](https://github.com/FinancialNoobster/Mad_2_Placement-Portal-Application) | 0 | Mad 2 Project by 23f2003605 for Jan 2026 Term |
+| [FinancialNoobster](https://github.com/FinancialNoobster/FinancialNoobster) | 0 | Python |
 
 ### 🏆 Personal progress milestones (not official GitHub trophies)
 
@@ -242,7 +243,7 @@ My public projects, languages, milestones and activity are discovered automatica
 | Stars earned | **2** | 5 |
 | Followers | **10** | 25 |
 
-<!-- DATA_HASH:ffb2b365443cce84376790d66bcd1d6acc2aebf8f28054225059c169fb4fe524 -->
+<!-- DATA_HASH:78f724abb949e350e0636ae863af5109c2f6955c8ab3c82cb9920ead224b06fa -->
 <!-- LIVE_GITHUB_END -->
 
 ## 🤝 Connect
